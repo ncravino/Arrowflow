@@ -29,7 +29,7 @@ module Arrowflow = struct
                 let open Operators in
                 let int_flow = (fun i -> i*5) |>> string_of_int in
                 let float_flow = float_of_int |>> (fun f -> f /. 2.0) >>> string_of_float in
-                let wk_flow = Op (fun s -> (s,s)) >>= (int_flow >*> float_flow) >>> (fun (a,b) -> String.concat ":" [a;b]) in
+                let wk_flow = start (fun s -> (s,s)) >>= (int_flow >*> float_flow) >>> (fun (a,b) -> String.concat ":" [a;b]) in
                 wk_flow >$ i
 
 
